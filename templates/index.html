@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaishnav Technologies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: rgb(255, 255, 246);
+      background-image: url('/static/images/Background_home.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .logo span {
+      color: #ff6600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ff6600;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn,
+    #buyBtn {
+      display: inline-block;
+      background-color: rgb(254, 87, 50);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn:hover,
+    #buyBtn:hover {
+      background-color: rgb(220, 60, 30);
+      box-shadow: 0 0 20px rgba(254, 87, 50, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 100px 50px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      color: #ff5733;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      color: #444;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-image {
+      max-width: 500px;
+    }
+
+    .hero-image img {
+      width: 100%;
+    }
+
+    .feature-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: stretch;
+      padding: 4rem 2rem;
+      background: #f7fef9;
+    }
+
+    .feature-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
+      width: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(52, 168, 83, 0.3);
+    }
+
+    .icon-circle {
+      background: linear-gradient(45deg, #34a853, #81c784);
+      color: white;
+      font-size: 1.7rem;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(52, 168, 83, 0.2);
+      margin-bottom: 1rem;
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover .icon-circle {
+      transform: rotate(360deg);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+      color: #222;
+    }
+
+    .feature-card p {
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .feature-card .number {
+      position: absolute;
+      bottom: 15px;
+      right: 20px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #e0f2f1;
+      user-select: none;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0b1d23;
+      color: #eee;
+      padding: 60px 30px 30px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-col {
+      flex: 1 1 220px;
+    }
+
+    .footer-logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo span {
+      color: #ff6600;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: #ff9366;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-col p {
+      margin-bottom: 1rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin-right: 10px;
+      font-size: 18px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ff6600;
+      transform: scale(1.2);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 40px;
+      padding-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .footer-bottom a {
+      color: #00c4b3;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"><span>V</span>aishnav <small>Technologies</small></div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Buy Kits</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/login" class="btn">Login</a>
+      <a href="/signup" class="btn">Sign up</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <p style="color: #00a3c4; font-weight: bold;">
+        BE PART OF THE AIR QUALITY REVOLUTION — LET’S CHANGE THE FUTURE TOGETHER
+      </p>
+      <h1>Grow with Plantera <br /> in the Digital Ecosystem</h1>
+      <p>
+        We craft strategies that help your green-tech brand flourish and lead in the digital world.
+        Earn exclusive Plantera tokens as you participate and grow with us.<br><br>
+        Let’s Cultivate the Future Together
+      </p>
+      <a href="#" id="buyBtn">Buy Kits <i class="fas fa-shopping-cart"></i></a>
+    </div>
+    <div class="hero-image">
+      <img src="/static/images/bg_free_img.png" alt="Graphics illustration" />
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="feature-section">
+    <div class="feature-card">
+      <div class="icon-circle">🌿</div>
+      <h3>Environmental Monitoring</h3>
+      <p>Track real-time air quality, humidity, and temperature using intelligent sensor kits.</p>
+      <span class="number">01</span>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon-circle">🔁</div>
+      <h3>Tokenization</h3>
+      <p>Every data packet you share earns you GreenTokens — rewarding your environmental impact.</p>
+      <span class="number">02</span>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon-circle">🌎</div>
+      <h3>Eco-Friendly Design</h3>
+      <p>Built with low-power tech and sustainable materials to reduce environmental footprint.</p>
+      <span class="number">03</span>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon-circle">🔌</div>
+      <h3>Easy Integration</h3>
+      <p>Seamlessly connect with platforms and APIs to unlock real-time environmental intelligence.</p>
+      <span class="number">04</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col about">
+        <h2 class="footer-logo"><span>P</span>lantera</h2>
+        <p>
+          Plantera empowers green-tech innovation through real-time environmental tracking and tokenized incentives.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href=""><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Buy Kits</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Technologies</h4>
+        <ul>
+          <li><a href="#">Air Quality Sensors</a></li>
+          <li><a href="#">Blockchain Tracking</a></li>
+          <li><a href="#">Token Reward System</a></li>
+          <li><a href="#">Sustainability Insights</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Insights</h4>
+        <ul>
+          <li><a href="#">Eco Innovation</a></li>
+          <li><a href="#">Token Impact</a></li>
+          <li><a href="#">Smart Cities</a></li>
+          <li><a href="#">Sustainable Future</a></li>
+        </ul>
+      </div>
+    </div>
+
+    
+  <!-- Font Awesome Script (already included above via CDN) -->
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!-- templates/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h2>Welcome, {{ email }}</h2>
+    <p>Wallet Address: {{ wallet }}</p>
+    <p>Your Token Balance: {{ balance }}</p>
+
+    <a href="/logout">Logout</a>
+</body>
+</html>
