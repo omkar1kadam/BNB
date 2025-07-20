@@ -388,6 +388,10 @@ def order():
 def about():
     return render_template('about.html')
 
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 
 from aqi_token.contract import get_token_balance
 

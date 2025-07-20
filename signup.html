@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard - Plantera</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
@@ -23,7 +23,6 @@
       flex-direction: column;
     }
 
-    /* Navbar */
     header {
       display: flex;
       justify-content: space-between;
@@ -85,10 +84,9 @@
       transform: translateY(-2px);
     }
 
-    /* Dashboard */
     .dashboard {
-      max-width: 1000px;
-      margin: 60px auto;
+      max-width: 1100px;
+      margin: 50px auto;
       padding: 40px;
       background: rgba(255, 255, 255, 0.85);
       border-radius: 20px;
@@ -106,6 +104,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
+      margin-bottom: 40px;
     }
 
     .card {
@@ -127,23 +126,39 @@
       text-shadow: 0 0 6px rgba(254, 87, 50, 0.3);
     }
 
-    .card p, .card ul {
+    .card p {
       color: #333;
       font-size: 16px;
     }
 
-    ul.sensor-list {
-      list-style: none;
-      padding-left: 0;
+    .token-card {
+      grid-column: span 2;
+      background: #fff4f0;
+      box-shadow: 0 0 15px rgba(254, 87, 50, 0.3);
     }
 
-    ul.sensor-list li {
-      padding: 8px 12px;
-      margin-bottom: 8px;
-      background: #fffef6;
-      border-left: 4px solid #fe5732;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #fe5732;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #fff1ec;
     }
 
     footer {
@@ -166,6 +181,14 @@
         flex-direction: column;
         gap: 10px;
       }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .token-card {
+        grid-column: span 1;
+      }
     }
   </style>
 </head>
@@ -187,86 +210,56 @@
     </div>
   </header>
 
-  <!-- Dashboard Content -->
+  <!-- Dashboard -->
   <div class="dashboard">
-    <h2>Welcome, User ID: <strong>0xAb12...CD34</strong></h2>
+    <h2>Welcome, User ID: <strong>{{ email }}</strong></h2>
+
     <div class="card-grid">
       <div class="card">
         <h3>🌿 Token Balance</h3>
-        <p><strong>1523 PLAN</strong></p>
-      </div>
-      <div class="card">
-        <h3>📟 Sensor 1</h3>
-        <p>Air Quality Sensor - AQ Kit #1</p>
-      </div>
-      <div class="card">
-        <h3>🌡️ Sensor 2</h3>
-        <p>Temperature Sensor - Env Kit #3</p>
-      </div>
-      <div class="card">
-        <h3>💧 Sensor 3</h3>
-        <p>Humidity Sensor - Smart Kit #2</p>
-      </div>
-      <div class="card">
-        <h3>🧪 Sensor 4</h3>
-        <p>pH Sensor - Soil Kit #4</p>
+        <p><strong>{{ balance }}</strong></p>
       </div>
     </div>
+
+    <h2>📟 Registered Sensors</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Sr. No.</th>
+          <th>Kit Name</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>AQ Kit #1</td>
+          <td>✅ Active</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Temperature Kit #3</td>
+          <td>✅ Active</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Humidity Kit #2</td>
+          <td>⚠️ Low Battery</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>pH Kit #4</td>
+          <td>❌ Disconnected</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-   <footer>
-        <div class="footer-container">
-            <div class="footer-col about">
-                <h2 class="footer-logo"><span>P</span>lantera</h2>
-                <p>
-                    Plantera empowers green-tech innovation through real-time environmental tracking and tokenized
-                    incentives.
-                </p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Buy Kits</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Technologies</h4>
-                <ul>
-                    <li><a href="#">Air Quality Sensors</a></li>
-                    <li><a href="#">Blockchain Tracking</a></li>
-                    <li><a href="#">Token Reward System</a></li>
-                    <li><a href="#">Sustainability Insights</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Insights</h4>
-                <ul>
-                    <li><a href="#">Eco Innovation</a></li>
-                    <li><a href="#">Token Impact</a></li>
-                    <li><a href="#">Smart Cities</a></li>
-                    <li><a href="#">Sustainable Future</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>Copyright © 2025 Plantera. All Rights Reserved.</p>
-
-        </div>
-    </footer>
-
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Plantera — Powering Decentralized Sustainability
+  </footer>
 
 </body>
 </html>
+dashboard
