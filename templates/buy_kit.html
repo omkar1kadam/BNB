@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Kits | Plantera</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: rgb(255, 255, 246);
+            background-image: url('Background_home.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo span {
+            color: #ff6600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: rgb(254, 87, 50);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn:hover {
+            background-color: rgb(220, 60, 30);
+            box-shadow: 0 0 20px rgba(254, 87, 50, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .kits-section {
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .kits-section h1 {
+            font-size: 40px;
+            font-weight: bold;
+            color: #ff5733;
+            text-shadow: 0 0 10px rgba(255, 87, 51, 0.6);
+            margin-bottom: 50px;
+        }
+
+        .kits-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .kit-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            width: 270px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .kit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(254, 87, 50, 0.2);
+        }
+
+        .kit-card h3 {
+            font-size: 22px;
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+
+        .kit-card p {
+            color: #444;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .kit-card .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00a878;
+            margin-bottom: 20px;
+        }
+
+        .kit-card .btn {
+            background-color: #00a878;
+        }
+
+        .footer {
+            background: #0b1d23;
+            color: #eee;
+            padding: 60px 30px 30px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .footer-col {
+            flex: 1 1 220px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo span {
+            color: #ff6600;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: #ff9366;
+            transition: 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 15px;
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo" style="text-decoration: none;"><span>P</span>lantera</a>
+
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Buy Kits</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="btn">Sign in</a>
+            <a href="#" class="btn">Sign up</a>
+        </div>
+    </header>
+
+    <section class="kits-section">
+        <h1>Buy Our Smart Kits</h1>
+        <div class="kits-container">
+            <div class="kit-card">
+                <h3>Starter Kit</h3>
+                <p>Basic sensors for air quality & temperature monitoring.</p>
+                <div class="price">₹1,500</div>
+                <a href="/order" class="btn">Buy Now</a>
+            </div>
+            <div class="kit-card">
+                <h3>Pro Kit</h3>
+                <p>Extra sensors & better data accuracy for enthusiasts.</p>
+                <div class="price">₹3,500</div>
+                <a href="/order" class="btn">Buy Now</a>
+            </div>
+
+
+        </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h2 class="footer-logo"><span>P</span>lantera</h2>
+                <p>Empowering green-tech innovation through data and rewards.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Buy Kits</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Technologies</h4>
+                <ul>
+                    <li><a href="#">Air Quality Sensors</a></li>
+                    <li><a href="#">Blockchain Tracking</a></li>
+                    <li><a href="#">Token Rewards</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Plantera. All rights reserved. Powered by GreenSpark.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

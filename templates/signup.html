@@ -1,24 +1,315 @@
-<!-- templates/signup.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Plantera</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #fffef6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .logo span {
+            color: #ff6600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #fe5732;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn:hover {
+            background-color: #e64a28;
+            box-shadow: 0 0 20px rgba(254, 87, 50, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* FORM */
+        .signup-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .signup-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            color: #fe5732;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(254, 87, 50, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 40px 14px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-group i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .otp-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .otp-row input[type="text"] {
+            flex: 1;
+        }
+
+        .btn-otp {
+            background-color: #00a3c4;
+            color: white;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-otp:hover {
+            background-color: #008ba1;
+        }
+
+        .btn-signup {
+            width: 100%;
+            background-color: #fe5732;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(254, 87, 50, 0.3);
+        }
+
+        .btn-signup:hover {
+            background-color: #e64a28;
+            box-shadow: 0 0 20px rgba(254, 87, 50, 0.5);
+        }
+
+        .signin-link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signin-link a {
+            color: #00a3c4;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 25px;
+            }
+
+            .otp-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Sign Up</h2>
-    <form action="/signup" method="POST">
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required><br><br>
+    <!-- NAVBAR -->
+    <header>
+        <a href="/" class="logo" style="text-decoration: none;"><span>P</span>lantera</a>
 
-        <label>Wallet Address:</label><br>
-        <input type="text" name="wallet" required><br><br>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Buy Kits</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="/login" class="btn">Sign In</a>
+            <!-- <a href="#" class="btn">Sign Up</a> -->
+        </div>
+    </header>
 
-        <button type="submit">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="/login">Login</a></p>
+    <!-- SIGNUP FORM -->
+    <div class="signup-wrapper">
+        <div class="signup-container">
+            <h2>Create Your Plantera Account</h2>
+
+            <form action="/signup" method="POST">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required />
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <div class="form-group otp-row">
+                    <input type="text" name="otp" placeholder="Enter OTP" required />
+                    <button type="button" class="btn-otp">Send OTP</button>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required />
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="wallet" placeholder="BNB Wallet Address" required />
+                    <i class="fas fa-wallet"></i>
+                </div>
+
+                <button type="submit" class="btn-signup">Sign Up</button>
+            </form>
+
+            <div class="signin-link">
+                Already have an account? <a href="/login">Sign In</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector(".btn-otp").addEventListener("click", () => {
+            const email = document.querySelector("input[name='email']").value;
+            if (!email) {
+                alert("Please enter an email first.");
+                return;
+            }
+
+            fetch("/send_otp", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "email=" + encodeURIComponent(email)
+            })
+                .then(res => res.text())
+                .then(data => alert(data))
+                .catch(err => alert("Error sending OTP."));
+        });
+
+
+    </script>
+    <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+            const pass = document.querySelector("input[name='password']").value;
+            const confirm = document.querySelector("input[name='confirm_password']").value;
+            if (pass !== confirm) {
+                e.preventDefault();
+                alert("Passwords do not match!");
+            }
+        });
+    </script>
+
+
 </body>
+
 </html>

@@ -1,0 +1,54 @@
+<!-- templates/success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Successful - Plantera</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f9fff9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .success-box {
+            padding: 40px;
+            background: #eaffea;
+            border: 2px solid #a0e7a0;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+        }
+
+        .success-box h1 {
+            color: #2e8b57;
+        }
+
+        .success-box a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #2e8b57;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .success-box a:hover {
+            background: #246e45;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-box">
+        <h1>🎉 Order Placed Successfully!</h1>
+        <p>Thank you for choosing Plantera!</p>
+        <a href="/dashboard">Go to Dashboard</a>
+    </div>
+</body>
+</html>
